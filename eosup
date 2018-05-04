@@ -1,0 +1,5 @@
+docker run -it --rm -w /opt/eosio -p 8888:8888 -p 9876:9876 --name eos_dev_tmp -v $(pwd):/opt/eosio/data wanglei/eos bash
+
+
+
+
