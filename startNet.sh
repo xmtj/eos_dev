@@ -1,1 +1,1 @@
-nodeos --config  /opt/eosio/data/config.ini  -d  /opt/eosio/data/data_dir
+nodeos --config  $(pwd)/config.ini  -d  $(pwd)/data_dir
