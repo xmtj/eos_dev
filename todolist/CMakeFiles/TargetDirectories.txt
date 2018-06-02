@@ -1,5 +1,0 @@
-/opt/eosio/data/todolist/CMakeFiles/rebuild_cache.dir
-/opt/eosio/data/todolist/CMakeFiles/assembly.dir
-/opt/eosio/data/todolist/CMakeFiles/link.dir
-/opt/eosio/data/todolist/CMakeFiles/wast.dir
-/opt/eosio/data/todolist/CMakeFiles/edit_cache.dir
