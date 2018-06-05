@@ -28,6 +28,8 @@ class worldtrip : public eosio::contract
         require_auth(author);
         // time_t nowtime;
         // nowtime = time(NULL); //获取当前时间
+
+        //todo 所有的都使用_self指定，然后添加标示账户进行筛选。 
         trip_table trips(_self, author);
         trips.emplace(author, [&](auto &new_trip) {
             new_trip.id = N(author);
