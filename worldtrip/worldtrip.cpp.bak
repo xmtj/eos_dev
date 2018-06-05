@@ -1,0 +1,68 @@
+/**
+ *  @file
+ *  @copyright defined in eos/LICENSE.txt
+ */
+#pragma once
+
+#include <eosiolib/asset.hpp>
+#include <eosiolib/eosio.hpp>
+#include <eosiolib/print.h>
+#include <vector>
+
+#include <string>
+
+namespace eosio
+{
+using std::string;
+class worldtrip : public contract
+{
+
+public:
+  worldtrip(account_name self) : contract(self) {}
+
+  //@abi table trips i64
+  struct trip
+  {
+    uint64_t id;             // id
+    bool is_private = false; // 是否公开
+    time trip_time;          // 旅游的时间
+    string description;      // 描述
+    string pic_url;          // 图片url ，可以放在ipfs上
+
+    uint64_t primary_key() const { return id; }
+  };
+  typedef multi_index<N(trips), trip> trips;
+  //@abi action
+  void create(account_name creater,
+              bool is_private,
+              time trip_time,
+              string description,
+              string pic_url)
+  {
+    print("creater:", name{creater});
+    require_auth(creater);
+    trips tt(_self, creater);
+    tt.emplace(creater, [&](auto &new_trip) {
+      new_trip.id = N(creater);
+      new_trip.is_private = is_private;
+      new_trip.trip_time = trip_time;
+      new_trip.description = description;
+      new_trip.pic_url = pic_url;
+    });
+    print("creater success id #:", N(creater));
+  };
+  //@abi action
+  void change(account_name changer, bool is_private){
+
+  };
+
+  //@abi action
+  vector<trip> gettrips(account_name owner){
+
+  };
+
+private:
+};
+}; // namespace eosio
+
+EOSIO_ABI(worldtrip, (create)(change)(gettrips))
