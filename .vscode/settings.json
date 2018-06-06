@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "__locale": "cpp",
+        "locale": "cpp",
+        "iosfwd": "cpp",
+        "typeinfo": "cpp",
+        "iterator": "cpp",
+        "vector": "cpp",
+        "__functional_base": "cpp",
+        "array": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "__tree": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "string": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

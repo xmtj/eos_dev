@@ -7,21 +7,19 @@ class todolist : public eosio::contract
 
   public:
     using eosio::contract::contract;
+    //@abi table todos i64
     struct todo
     {
         uint64_t id;
         string description;
         uint64_t completed;
 
-        uint64_t primary_key() const
-        {
-            return id;
-        }
+        uint64_t primary_key()const { return id; }
         EOSLIB_SERIALIZE(todo, (id)(description)(completed))
     };
 
     typedef eosio::multi_index<N(todos), todo> todo_table;
-
+    //@abi action
     void create(account_name author, const uint32_t id, const string &description)
     {
         todo_table todos(_self, author);
@@ -32,7 +30,7 @@ class todolist : public eosio::contract
         });
         eosio::print("todo#", id, "create");
     }
-
+    //@abi action
     void complete(account_name author, const uint32_t id)
     {
         todo_table todos(_self, author);
@@ -43,7 +41,7 @@ class todolist : public eosio::contract
         });
         eosio::print("todo#", id, "marked as completed");
     }
-
+    //@abi action
     void destroy(account_name author, const uint32_t id)
     {
         todo_table todos(_self, author);

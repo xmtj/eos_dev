@@ -1,5 +1,6 @@
 #include <eosiolib/eosio.hpp>;
 #include <eosiolib/print.hpp>;
+#include <eosiolib/currency.hpp>
 // #include <time.h>;
 
 using namespace std;
@@ -33,10 +34,11 @@ class worldtrip : public eosio::contract
         trip_table trips(_self, author);
         trips.emplace(author, [&](auto &new_trip) {
             new_trip.id = N(author);
-            //new_trip.trip_time = nowtime;
+            new_trip.trip_time = now();
             new_trip.description = description;
             new_trip.pic_url = pic_url;
         });
+        
     }
     //@abi action
     void change(account_name author, const bool is_private)
